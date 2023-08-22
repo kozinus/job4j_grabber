@@ -24,12 +24,12 @@ public class Post {
         if (!(o instanceof Post post)) {
             return false;
         }
-        return id == post.id && link.equals(post.link) && created.equals(post.created);
+        return id == post.id && link.equals(post.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, link, created);
+        return Objects.hash(id, link);
     }
 
     @Override
