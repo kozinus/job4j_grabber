@@ -1,5 +1,6 @@
 package ru.job4j.grabber;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -10,10 +11,11 @@ public class Post {
     private String description;
     private LocalDateTime created;
 
-    public Post(int id, String link) {
+    public Post(int id, String link) throws IOException {
         this.id = id;
         this.link = link;
         this.created = LocalDateTime.now();
+        this.description = HabrCareerParse.retrieveDescription(link);
     }
 
     @Override

@@ -16,7 +16,29 @@ public class HabrCareerParse {
 
     private static final String PAGE_LINK = String.format("%s/vacancies/java_developer?page=", SOURCE_LINK);
 
+    public static String retrieveDescription(String link) throws IOException {
+        StringBuilder out = new StringBuilder();
+        Connection connection = Jsoup.connect(link);
+        Document document = connection.get();
+        document.select(".vacancy-description__text").first().getAllElements().forEach(tag -> {
+            switch (tag.tagName()) {
+                case "h3":
+                case "p":
+                    out.append(tag.text()).append("\n");
+                    break;
+                case "li":
+                    out.append("    - ").append(tag.text()).append("\n");
+                    break;
+                default:
+                    break;
+            }
+        });
+        System.out.println(out);
+        return out.toString();
+    }
+
     public static void main(String[] args) throws IOException {
+        retrieveDescription("https://career.habr.com/vacancies/1000126258");
         for (int i = 1; i <= 5; i++) {
             Connection connection = Jsoup.connect(String.format("%s%s", PAGE_LINK, i));
             Document document = connection.get();
