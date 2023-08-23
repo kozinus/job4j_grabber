@@ -1,6 +1,5 @@
 package ru.job4j.grabber;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,11 +10,12 @@ public class Post {
     private String description;
     private LocalDateTime created;
 
-    public Post(int id, String link, String description) throws IOException {
+    public Post(int id, String link, String title, String description, LocalDateTime created) {
         this.id = id;
         this.link = link;
         this.description = description;
-        this.created = LocalDateTime.now();
+        this.title = title;
+        this.created = created;
     }
 
     @Override
@@ -45,6 +45,30 @@ public class Post {
                 + '}';
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -53,9 +77,11 @@ public class Post {
         this.description = description;
     }
 
-    public static void main(String[] args) throws IOException {
-        String link = "https://career.habr.com/vacancies/1000126258";
-        Post post = new Post(1, link, HabrCareerParse.retrieveDescription(link));
-        System.out.println(post.getDescription());
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 }
