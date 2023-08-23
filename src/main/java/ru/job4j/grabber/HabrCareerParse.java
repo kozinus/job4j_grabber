@@ -33,12 +33,10 @@ public class HabrCareerParse {
                     break;
             }
         });
-        System.out.println(out);
         return out.toString();
     }
 
     public static void main(String[] args) throws IOException {
-        retrieveDescription("https://career.habr.com/vacancies/1000126258");
         for (int i = 1; i <= 5; i++) {
             Connection connection = Jsoup.connect(String.format("%s%s", PAGE_LINK, i));
             Document document = connection.get();

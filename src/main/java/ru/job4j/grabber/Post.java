@@ -11,11 +11,11 @@ public class Post {
     private String description;
     private LocalDateTime created;
 
-    public Post(int id, String link) throws IOException {
+    public Post(int id, String link, String description) throws IOException {
         this.id = id;
         this.link = link;
+        this.description = description;
         this.created = LocalDateTime.now();
-        this.description = HabrCareerParse.retrieveDescription(link);
     }
 
     @Override
@@ -43,5 +43,19 @@ public class Post {
                 + ", description='" + description + '\''
                 + ", created=" + created
                 + '}';
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public static void main(String[] args) throws IOException {
+        String link = "https://career.habr.com/vacancies/1000126258";
+        Post post = new Post(1, link, HabrCareerParse.retrieveDescription(link));
+        System.out.println(post.getDescription());
     }
 }
