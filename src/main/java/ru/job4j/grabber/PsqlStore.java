@@ -1,11 +1,5 @@
 package ru.job4j.grabber;
 
-import ru.job4j.grabber.utils.DateTimeParser;
-import ru.job4j.grabber.utils.HabrCareerDateTimeParser;
-import ru.job4j.quartz.AlertRabbit;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +29,12 @@ public class PsqlStore implements Store {
     @Override
     public void save(Post post) {
         try (Statement statement = cnn.createStatement()) {
+            var resSet = statement.executeQuery(String.format(
+                    "SELECT * FROM %s ORDER BY ID DESC LIMIT 1", "post"
+            ));
+            if (resSet.next()) {
+                post.setId(resSet.getInt("id") + 1);
+            }
             String title = post.getTitle();
             String desc = post.getDescription();
             String link = post.getLink();
@@ -94,27 +94,7 @@ public class PsqlStore implements Store {
         return out;
     }
 
-    public static void main(String[] args) {
-        Properties cfg = new Properties();
-        try (InputStream in = AlertRabbit.class.getClassLoader().getResourceAsStream("grabber.properties")) {
-            cfg.load(in);
-            PsqlStore store = new PsqlStore(cfg);
-            DateTimeParser formatter = new HabrCareerDateTimeParser();
-            Post obj1 = new Post(1, "title", "desc", "link//", formatter.parse("2003-08-24T13:55:16+03:00"));
-            System.out.println(obj1);
-            Post obj2 = new Post(2, "title1", "desc1", "link//habr", formatter.parse("2023-07-24T13:55:16+03:00"));
-            Post obj3 = new Post(3, "title2", "desc2", "link//vacancies", formatter.parse("2023-08-12T13:55:16+02:00"));
-            store.save(obj1);
-            store.save(obj2);
-            store.save(obj3);
-            System.out.println(store.getAll());
-            System.out.println(store.findById(1));
-        } catch (IOException | SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-        @Override
+    @Override
     public void close() throws Exception {
         if (cnn != null) {
             cnn.close();

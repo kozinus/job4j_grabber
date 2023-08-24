@@ -5,7 +5,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import ru.job4j.grabber.utils.DateTimeParser;
-import ru.job4j.grabber.utils.HabrCareerDateTimeParser;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -28,15 +27,10 @@ public class HabrCareerParse implements Parse {
         StringBuilder out = new StringBuilder();
         document.select(".vacancy-description__text").first().getAllElements().forEach(tag -> {
             switch (tag.tagName()) {
-                case "h3":
-                case "p":
-                    out.append(tag.text()).append("\n");
-                    break;
-                case "li":
-                    out.append("    - ").append(tag.text()).append("\n");
-                    break;
-                default:
-                    break;
+                case "h3", "p" -> out.append(tag.text()).append("\n");
+                case "li" -> out.append("    - ").append(tag.text()).append("\n");
+                default -> {
+                }
             }
         });
         return out.toString();
@@ -58,11 +52,10 @@ public class HabrCareerParse implements Parse {
             Elements rows = document.select(".vacancy-card__inner");
             rows.forEach(row -> {
                 try {
-                    Document postDoc = Jsoup.connect(String.format("%s%s", SOURCE_LINK,
-                            row.select(".vacancy-card__title").first().child(0).attr("href"))).get();
-                    posts.add(new Post(1, retrieveTitle(postDoc), retrieveDescription(postDoc), String.format("%s%s", SOURCE_LINK,
-                            row.select(".vacancy-card__title").first().child(0).attr("href")),
-                            retrieveCreated(postDoc)));
+                    String joblink = String.format("%s%s", SOURCE_LINK, row.child(1).attr("href"));
+                    Document postDoc = Jsoup.connect(joblink).get();
+                    posts.add(new Post(1, retrieveTitle(postDoc), retrieveDescription(postDoc),
+                            joblink, retrieveCreated(postDoc)));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -80,11 +73,5 @@ public class HabrCareerParse implements Parse {
             posts.addAll(Objects.requireNonNull(pageParsing(String.format("%s%s", link, i))));
         }
         return posts;
-    }
-
-    public static void main(String[] args) {
-        Parse habr = new HabrCareerParse(new HabrCareerDateTimeParser());
-        List<Post> habrJobPosts = habr.list("https://career.habr.com/vacancies/java_developer?page=");
-        System.out.println(habrJobPosts.get(0));
     }
 }
