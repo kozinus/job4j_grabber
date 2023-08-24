@@ -60,8 +60,8 @@ public class HabrCareerParse implements Parse {
                 try {
                     Document postDoc = Jsoup.connect(String.format("%s%s", SOURCE_LINK,
                             row.select(".vacancy-card__title").first().child(0).attr("href"))).get();
-                    posts.add(new Post(1, retrieveTitle(postDoc), String.format("%s%s", SOURCE_LINK,
-                            row.select(".vacancy-card__title").first().child(0).attr("href")), retrieveDescription(postDoc),
+                    posts.add(new Post(1, retrieveTitle(postDoc), retrieveDescription(postDoc), String.format("%s%s", SOURCE_LINK,
+                            row.select(".vacancy-card__title").first().child(0).attr("href")),
                             retrieveCreated(postDoc)));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
