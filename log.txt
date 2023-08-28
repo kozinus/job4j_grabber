@@ -1,0 +1,19 @@
+[0.007s][info][gc] Using Serial
+[4.537s][info][gc] GC(0) Pause Young (Allocation Failure) 4M->2M(15M) 5.429ms
+[4.633s][info][gc] GC(1) Pause Young (Allocation Failure) 6M->2M(15M) 3.237ms
+[4.700s][info][gc] GC(2) Pause Young (Allocation Failure) 7M->3M(15M) 2.168ms
+[4.866s][info][gc] GC(3) Pause Young (Allocation Failure) 7M->3M(15M) 1.859ms
+[7.080s][info][gc] GC(4) Pause Young (Allocation Failure) 7M->4M(15M) 4.281ms
+[36.363s][info][gc] GC(5) Pause Young (Allocation Failure) 8M->4M(15M) 2.323ms
+[36.381s][info][gc] GC(6) Pause Young (Allocation Failure) 8M->4M(15M) 0.674ms
+[36.394s][info][gc] GC(7) Pause Young (Allocation Failure) 8M->4M(15M) 0.571ms
+[36.409s][info][gc] GC(8) Pause Young (Allocation Failure) 8M->4M(15M) 0.634ms
+[36.423s][info][gc] GC(9) Pause Young (Allocation Failure) 8M->4M(15M) 0.677ms
+[54.118s][info][gc] GC(10) Pause Young (Allocation Failure) 8M->4M(15M) 1.012ms
+[94.106s][info][gc] GC(11) Pause Young (Allocation Failure) 8M->4M(15M) 0.853ms
+[98.437s][info][gc] GC(12) Pause Young (Allocation Failure) 8M->4M(15M) 0.775ms
+[98.446s][info][gc] GC(13) Pause Young (Allocation Failure) 8M->4M(15M) 0.694ms
+[98.455s][info][gc] GC(14) Pause Young (Allocation Failure) 8M->4M(15M) 0.771ms
+[98.463s][info][gc] GC(15) Pause Young (Allocation Failure) 8M->4M(15M) 0.689ms
+[107.154s][info][gc] GC(16) Pause Young (Allocation Failure) 8M->4M(15M) 0.832ms
+[149.135s][info][gc] GC(17) Pause Young (Allocation Failure) 8M->4M(15M) 2.034ms
