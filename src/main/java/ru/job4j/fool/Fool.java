@@ -4,11 +4,7 @@ import java.util.Scanner;
 
 public class Fool {
 
-    private boolean isDivByInt(int num, int div) {
-        return num % div == 0;
-    }
-
-    private boolean answerCheck(String out, Scanner io) {
+    public static boolean answerCheck(String out, Scanner io) {
         boolean success = true;
         String answer = io.nextLine();
         if (!out.equals(answer)) {
@@ -18,16 +14,22 @@ public class Fool {
         return success;
     }
 
-    public void init() {
+    static class OutFormat {
+        public static String formatting(int num) {
+            String out = String.format("%s%s",
+                    num % 3 == 0 ? "Fizz" : "",
+                    num % 5 == 0 ? "Buzz" : "");
+            return out.isEmpty() ? String.valueOf(num) : out;
+        }
+    }
+
+    public static void main(String[] args) {
         System.out.println("Игра FizzBuzz.");
         int startAt = 1;
         boolean turn = false;
         Scanner io = new Scanner(System.in);
         while (startAt < 100) {
-            String out = String.format("%s%s",
-                    this.isDivByInt(startAt, 3) ? "Fizz" : "",
-                    this.isDivByInt(startAt, 5) ? "Buzz" : "");
-            out = out.isEmpty() ? String.valueOf(startAt) : out;
+            String out = Fool.OutFormat.formatting(startAt);
             if (turn) {
                 startAt = answerCheck(out, io) ? startAt : 0;
             } else {
@@ -36,10 +38,5 @@ public class Fool {
             turn = !turn;
             startAt++;
         }
-    }
-
-    public static void main(String[] args) {
-        Fool fool = new Fool();
-        fool.init();
     }
 }
