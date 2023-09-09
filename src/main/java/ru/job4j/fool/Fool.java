@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Fool {
 
-    public static boolean answerCheck(String out, Scanner io) {
+    private static boolean answerCheck(String out, Scanner io) {
         boolean success = true;
         String answer = io.nextLine();
         if (!out.equals(answer)) {
@@ -29,7 +29,7 @@ public class Fool {
         boolean turn = false;
         Scanner io = new Scanner(System.in);
         while (startAt < 100) {
-            String out = Fool.OutFormat.formatting(startAt);
+            String out = OutFormat.formatting(startAt);
             if (turn) {
                 startAt = answerCheck(out, io) ? startAt : 0;
             } else {
