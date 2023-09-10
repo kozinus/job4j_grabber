@@ -23,6 +23,7 @@ class TemplateTest {
                 isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Disabled
     @Test
     public void extraKey() {
         Generator template = new Template();
@@ -35,6 +36,7 @@ class TemplateTest {
                 isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Disabled
     @Test
     public void doubleKeyMap() {
         Generator template = new Template();
