@@ -1,6 +1,10 @@
 package ru.job4j.ood.ocp.ex;
 
 public class ExampleOCP {
+    /**
+     * Класс изначально не унаследован. А вдруг понадобится добавить добавить ещё классы
+     * магистров, специалистов или аспирантов
+     */
     private static class Bachelor {
         private int age;
 
@@ -9,8 +13,10 @@ public class ExampleOCP {
         }
     }
 
-    // Класс изначально не унаследован. А вдруг понадобится добавить добавить ещё классы
-    // магистров, специалистов или аспирантов
+    /**
+     *Классы Cat и Dog можно наследовать от интерфейса Animal, например,
+     *а не создавать отдельные классы для одной и той же задачи.
+     */
 
     private static class Cat {
         public String sound() {
@@ -23,8 +29,10 @@ public class ExampleOCP {
             return "Bark";
         }
     }
-    //Классы Cat и Dog можно наследовать от интерфейса Animal, например,
-    //а не создавать отдельные классы для одной и той же задачи.
+
+    /**
+     * Truck может быть унаследован от интерфейса транспорта
+     */
 
     private interface AutoTransport {
         double returnEngineCapacity();
@@ -48,6 +56,4 @@ public class ExampleOCP {
             return engineCapacity;
         }
     }
-
-    //Truck может быть унаследован от интерфейса транспорта
 }
