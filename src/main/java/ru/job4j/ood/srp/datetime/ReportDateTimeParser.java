@@ -1,4 +1,4 @@
-package ru.job4j.ood.srp.formatter;
+package ru.job4j.ood.srp.datetime;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

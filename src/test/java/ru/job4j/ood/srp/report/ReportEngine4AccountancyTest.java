@@ -3,8 +3,8 @@ package ru.job4j.ood.srp.report;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.srp.currency.Currency;
 import ru.job4j.ood.srp.currency.InMemoryCurrencyConverter;
-import ru.job4j.ood.srp.formatter.DateTimeParser;
-import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
+import ru.job4j.ood.srp.datetime.DateTimeParser;
+import ru.job4j.ood.srp.datetime.ReportDateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 import ru.job4j.ood.srp.store.MemStore;
 
