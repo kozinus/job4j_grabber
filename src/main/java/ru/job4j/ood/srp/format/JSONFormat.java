@@ -19,7 +19,6 @@ public class JSONFormat implements Format {
             jsonObject.put("salary", e.getSalary());
             jsonArray.put(jsonObject);
         }
-        System.out.println(jsonArray.toString());
         return jsonArray.toString();
     }
 }

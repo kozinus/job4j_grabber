@@ -20,7 +20,6 @@ public class XMLFormat implements Format {
             .add("fired").set(dtp.parse(e.getFired())).up()
                     .add("salary").set(String.valueOf(e.getSalary())).up().up();
         }
-        System.out.println(new Xembler(directives).xmlQuietly());
         return new Xembler(directives).xmlQuietly();
     }
 }
