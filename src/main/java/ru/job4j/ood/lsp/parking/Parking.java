@@ -3,9 +3,9 @@ package ru.job4j.ood.lsp.parking;
 import java.util.ArrayList;
 
 public interface Parking {
-    void add();
+    boolean add(Car car);
 
-    Car remove();
+    Car remove(Car car);
 
     ArrayList<Car> getAllCars();
 }
