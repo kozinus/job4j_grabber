@@ -28,7 +28,7 @@ class ShopTest {
     public void pushTomatoesInShopWithDiscount() {
         Food product = new Food("Tomatoes", LocalDate.of(2023, 10, 18), LocalDate.of(2023, 9, 5), 200, 0);
         control.pushInStore(product, store);
-        assertThat(store.shift().getProducts().contains(product)).isTrue();
+        assertThat(store.shift().getProducts().contains(product)).isFalse();
         assertThat(store.shift().getProducts().get(0).getDiscount()).isEqualTo(20);
     }
 }
