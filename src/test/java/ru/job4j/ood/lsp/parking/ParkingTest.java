@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SimpleParkingTest {
+class ParkingTest {
     private Parking parking;
     private Car car1;
     private Car car2;
